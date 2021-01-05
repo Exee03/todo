@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
+  <ion-toolbar color="dark">
     <ion-title>
-      Blank
+      Todo
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -13,8 +13,43 @@
     </ion-toolbar>
   </ion-header>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+  <ion-button (click)="addDB()" expand="block" fill="clear" shape="round">
+    Add
+  </ion-button>
+
+  <ion-button (click)="readDb()" expand="block" fill="clear" shape="round">
+    read
+  </ion-button>
+
+  <!-- <ion-logo></ion-logo>
+
+  <ion-input type="number" placeholder="Awesome Input" [(ngModel)]="numberA"></ion-input>
+  <ion-input type="number" placeholder="Awesome Input" [(ngModel)]="numberB"></ion-input>
+
+  <ion-button (click)="calculate()" expand="block" fill="clear" shape="round">
+    calculate
+  </ion-button>
+  
+  <ion-logo></ion-logo> -->
+
+  <!-- <ion-card color="secondary" *ngFor="let item of card">
+    <ion-card-header *ngIf="item == 'card 2'">
+      <ion-card-subtitle>First card</ion-card-subtitle>
+      <ion-card-title>{{ item }}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      Awesome content
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card color="tertiary" *ngFor="let item of cardObject">
+    <ion-card-header>
+      <ion-card-subtitle>{{ item.subtitle }}</ion-card-subtitle>
+      <ion-card-title>{{ item.title }}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      {{ item.content }}
+    </ion-card-content>
+  </ion-card> -->
+
 </ion-content>

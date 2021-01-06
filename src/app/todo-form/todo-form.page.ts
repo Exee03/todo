@@ -8,11 +8,16 @@ import { ModalController } from '@ionic/angular';
 })
 export class TodoFormPage implements OnInit {
 
+  label = '';
   constructor(
     private modalController: ModalController
   ) { }
 
   ngOnInit() {
+  }
+
+  submit() {
+    return this.modalController.dismiss(this.label);
   }
 
   close() {

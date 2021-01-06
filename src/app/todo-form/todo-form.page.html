@@ -1,6 +1,6 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>todo-form</ion-title>
+  <ion-toolbar color="dark">
+    <ion-title>Todo Form</ion-title>
     <ion-buttons slot="end">
       <ion-button (click)="close()">
         <ion-icon slot="icon-only" name="close"></ion-icon>
@@ -10,5 +10,16 @@
 </ion-header>
 
 <ion-content>
+
+  <ion-list>
+    <ion-item>
+      <ion-label>Label</ion-label>
+      <ion-input [(ngModel)]="label"></ion-input>
+    </ion-item>
+
+    <ion-button (click)="submit()" expand="block" fill="clear" shape="round">
+      Submit
+    </ion-button>
+  </ion-list>
 
 </ion-content>

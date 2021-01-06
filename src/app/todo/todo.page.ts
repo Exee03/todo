@@ -68,6 +68,19 @@ export class TodoPage implements OnInit {
 
     await modal.present();
 
+    const result = await modal.onDidDismiss();
+
+    console.log(result);
+
+    if(result.data != "") {
+      const todo = {
+        label: result.data,
+        check: false,
+      }
+      this.todos.push(todo);
+    }
+    
+
   }
 
 }

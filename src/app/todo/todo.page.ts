@@ -29,14 +29,15 @@ export class TodoPage implements OnInit {
 
   checked(todo) {
     console.log(todo);
-    this.todos = this.dbService.todos.map((t) => {
-      if (t.label == todo.label) {
-        t.check = !t.check;
-        // t.check = true;
-        return t;
-      }
-      return t;
-    });
+    // this.todos = this.dbService.todos.map((t) => {
+    //   if (t.label == todo.label) {
+    //     t.check = !t.check;
+    //     // t.check = true;
+    //     return t;
+    //   }
+    //   return t;
+    // });
+    this.dbService.update(todo);
     this.refeshTodo();
   }
 
@@ -76,6 +77,11 @@ export class TodoPage implements OnInit {
       this.refeshTodo();
     }
 
+  }
+
+  deleteTodo(todo) {
+    console.log(todo);
+    this.dbService.delete(todo);
   }
 
 }

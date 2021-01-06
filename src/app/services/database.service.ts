@@ -29,11 +29,18 @@ export class DatabaseService {
     return this.todos;
   }
 
-  update() {
-    return ;
+  update(todo) {
+    return this.todos.map((t) => {
+      if (t.label == todo.label) {
+        t.check = !t.check;
+        return t;
+      } else {
+        return t;
+      }
+    });
   }
 
-  delete() {
-    return ;
+  delete(todo) {
+    return;
   }
 }

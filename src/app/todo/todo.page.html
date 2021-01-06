@@ -34,6 +34,9 @@
         </ion-item-option>
         <ion-item-option *ngIf="todo.check == true" color="danger" (click)="checked(todo)">
           <ion-icon slot="icon-only" name="close"></ion-icon>
+        </ion-item-option> 
+        <ion-item-option  color="danger" (click)="deleteTodo(todo)">
+          <ion-label>DELETE</ion-label>
         </ion-item-option>
       </ion-item-options>
     </ion-item-sliding>

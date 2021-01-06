@@ -85,4 +85,27 @@ export class TodoPage implements OnInit {
     this.refeshTodo();
   }
 
+  async editTodo(todo) {
+    console.log(todo);
+    
+    const modal = await this.modalController.create({
+      component: TodoFormPage,
+      componentProps: { label: todo.label },
+    });
+
+    await modal.present();
+
+    const result = await modal.onDidDismiss();
+
+    console.log(result);
+
+    if(result.data != '') {
+      const todo = {
+        label: result.data,
+        check: false,
+      }
+    }
+
+  }
+
 }

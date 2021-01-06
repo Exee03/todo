@@ -19,6 +19,10 @@ const routes: Routes = [
     path: 'todo',
     loadChildren: () => import('./todo/todo.module').then( m => m.TodoPageModule)
   },
+  {
+    path: 'todo-form',
+    loadChildren: () => import('./todo-form/todo-form.module').then( m => m.TodoFormPageModule)
+  },
 ];
 
 @NgModule({

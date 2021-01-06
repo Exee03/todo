@@ -82,6 +82,7 @@ export class TodoPage implements OnInit {
   deleteTodo(todo) {
     console.log(todo);
     this.dbService.delete(todo);
+    this.refeshTodo();
   }
 
 }

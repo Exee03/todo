@@ -41,6 +41,14 @@ export class DatabaseService {
   }
 
   delete(todo) {
-    return;
+    this.todos = this.todos.filter((t) => {
+      if(t.label == todo.label){
+        return false;
+      } else {
+        return true;
+      }
+    })
+    
+    return this.todos;
   }
 }

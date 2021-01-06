@@ -46,6 +46,7 @@ export class TodoPage implements OnInit {
   }
 
   refeshTodo() {
+    this.getTodos();
     this.filterTodo = this.todos.filter((t) => {
       if (this.segment == "uncheck") {
         return t.check == false;
@@ -70,10 +71,10 @@ export class TodoPage implements OnInit {
         label: result.data,
         check: false,
       }
-      this.todos.push(todo);
+      this.dbService.create(todo);
+      // this.todos.push(todo);
       this.refeshTodo();
     }
-
 
   }
 

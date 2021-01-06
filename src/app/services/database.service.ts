@@ -21,8 +21,8 @@ export class DatabaseService {
 
   constructor() { }
 
-  create() {
-    return ;
+  create(todo) {
+    return this.todos.push(todo);
   }
 
   read() {

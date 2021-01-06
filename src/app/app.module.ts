@@ -18,8 +18,8 @@ import { TodoFormPageModule } from './todo-form/todo-form.module';
     BrowserModule,
     IonicModule.forRoot(),
     AppRoutingModule,
-    IonicStorageModule.forRoot(),
     TodoFormPageModule,
+    IonicStorageModule.forRoot(),
   ],
   providers: [
     StatusBar,

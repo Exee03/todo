@@ -23,8 +23,8 @@ export class TodoPage implements OnInit {
     this.refeshTodo();
   }
 
-  getTodos() {
-    this.todos = this.dbService.read();
+  async getTodos() {
+    this.todos = await this.dbService.read();
   }
 
   checked(todo) {
@@ -46,8 +46,8 @@ export class TodoPage implements OnInit {
     this.refeshTodo();
   }
 
-  refeshTodo() {
-    this.getTodos();
+  async refeshTodo() {
+    await this.getTodos();
     this.filterTodo = this.todos.filter((t) => {
       if (this.segment == "uncheck") {
         return t.check == false;

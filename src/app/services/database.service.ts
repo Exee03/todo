@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Storage } from '@ionic/storage';
 
 @Injectable({
   providedIn: 'root'
@@ -19,18 +20,22 @@ export class DatabaseService {
     }
   ];
 
-  constructor() { }
+  constructor(
+    private storage: Storage,
+  ) { }
 
   create(todo) {
-    return this.todos.push(todo);
+    this.todos.push(todo);
+    this.storage.set('todos', this.todos);
   }
 
-  read() {
+  async read() {
+    this.todos = await this.storage.get('todos');
     return this.todos;
   }
 
   update(todo) {
-    return this.todos.map((t) => {
+    this.todos = this.todos.map((t) => {
       if (t.label == todo.label) {
         t.check = !t.check;
         return t;
@@ -38,6 +43,7 @@ export class DatabaseService {
         return t;
       }
     });
+    this.storage.set('todos', this.todos);
   }
 
   delete(todo) {
@@ -49,6 +55,6 @@ export class DatabaseService {
       }
     })
     
-    return this.todos;
+    this.storage.set('todos', this.todos);
   }
 }

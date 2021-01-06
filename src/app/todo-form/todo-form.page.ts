@@ -9,6 +9,7 @@ import { ModalController } from '@ionic/angular';
 export class TodoFormPage implements OnInit {
 
   label = '';
+  file: File;
   constructor(
     private modalController: ModalController
   ) { }
@@ -18,6 +19,13 @@ export class TodoFormPage implements OnInit {
 
   submit() {
     return this.modalController.dismiss(this.label);
+  }
+  
+  changeListener(event) {
+    console.log(event);
+    this.file = event.target.files[0];
+    console.log(this.file);
+    
   }
 
   close() {

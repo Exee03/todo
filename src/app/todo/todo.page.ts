@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
+import { DatabaseService } from '../services/database.service';
 import { TodoFormPage } from '../todo-form/todo-form.page';
 
 @Component({
@@ -8,35 +9,27 @@ import { TodoFormPage } from '../todo-form/todo-form.page';
   styleUrls: ['./todo.page.scss'],
 })
 export class TodoPage implements OnInit {
-
-  todos = [
-    {
-      label: 'todo 1',
-      check: false,
-    },
-    {
-      label: 'todo 2',
-      check: false,
-    },
-    {
-      label: 'todo 3',
-      check: false,
-    }
-  ];
+  todos = [];
   filterTodo = [];
   segment = 'uncheck';
 
   constructor(
-    private modalController: ModalController
+    private modalController: ModalController,
+    private dbService: DatabaseService,
   ) { }
 
   ngOnInit() {
+    this.getTodos();
     this.refeshTodo();
+  }
+
+  getTodos() {
+    this.todos = this.dbService.read();
   }
 
   checked(todo) {
     console.log(todo);
-    this.todos = this.todos.map((t) => {
+    this.todos = this.dbService.todos.map((t) => {
       if (t.label == todo.label) {
         t.check = !t.check;
         // t.check = true;

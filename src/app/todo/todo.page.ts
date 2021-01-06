@@ -72,14 +72,15 @@ export class TodoPage implements OnInit {
 
     console.log(result);
 
-    if(result.data != "") {
+    if (result.data != "") {
       const todo = {
         label: result.data,
         check: false,
       }
       this.todos.push(todo);
+      this.refeshTodo();
     }
-    
+
 
   }
 

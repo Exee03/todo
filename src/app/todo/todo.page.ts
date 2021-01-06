@@ -27,4 +27,21 @@ export class TodoPage implements OnInit {
   ngOnInit() {
   }
 
+  checked(todo) {
+    console.log(todo);
+    this.todos = this.todos.map((t) => {
+      if(t.label == todo.label) {
+        t.check = !t.check;
+        // t.check = true;
+        return t;
+      }
+      return t;
+    });
+  }
+
+  segmentChanged(event) {
+    console.log(event.detail.value);
+    
+  }
+
 }

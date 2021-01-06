@@ -8,23 +8,28 @@
 </ion-header>
 
 <ion-content>
+
+  <ion-segment mode="ios" (ionChange)="segmentChanged($event)">
+    <ion-segment-button value="uncheck">
+      <ion-label>Uncheck</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="check">
+      <ion-label>Check</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+
   <ion-list>
-    <ion-item *ngFor="let todo of todos">
-      <ion-label>{{ todo.label }}</ion-label>
-    </ion-item>
-  </ion-list>
-  <ion-list>
-    <ion-item-sliding>
+    <ion-item-sliding *ngFor="let todo of todos">
       <ion-item>
-        <ion-label>Item</ion-label>
+        <ion-label>{{ todo.label }}</ion-label>
       </ion-item>
-      <ion-item-options side="start">
-        <ion-item-option (click)="favorite(item)">Favorite</ion-item-option>
-        <ion-item-option color="primary" (click)="share(item)">Share</ion-item-option>
-      </ion-item-options>
-  
-      <ion-item-options side="start">
-        <ion-item-option (click)="unread(item)">Unread</ion-item-option>
+      <ion-item-options side="end">
+        <ion-item-option *ngIf="todo.check == false" color="success" (click)="checked(todo)">
+          <ion-icon slot="icon-only" name="checkmark"></ion-icon>
+        </ion-item-option>
+        <ion-item-option *ngIf="todo.check == true" color="danger" (click)="checked(todo)">
+          <ion-icon slot="icon-only" name="close"></ion-icon>
+        </ion-item-option>
       </ion-item-options>
     </ion-item-sliding>
   </ion-list>

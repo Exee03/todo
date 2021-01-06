@@ -17,8 +17,19 @@ export class ListPage implements OnInit {
     
   }
 
-  unread(item){
+  unread(){
+    console.log('unread');
+    
+  }
 
+  onCheckboxChanged(event) {
+    console.log(event.detail.checked);
+    
+  }
+
+  onInputChange(event){
+    console.log(event);
+    
   }
 
 }

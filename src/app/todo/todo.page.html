@@ -24,7 +24,8 @@
   </ion-segment>
 
   <ion-list>
-    <ion-item-sliding (click)="editTodo(todo)" *ngFor="let todo of filterTodo">
+    <!-- <ion-item-sliding (click)="editTodo(todo)" *ngFor="let todo of filterTodo"> -->
+      <ion-item-sliding *ngFor="let todo of filterTodo">
       <ion-item>
         <ion-label>{{ todo.label }}</ion-label>
       </ion-item>

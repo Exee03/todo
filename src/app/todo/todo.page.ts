@@ -85,27 +85,30 @@ export class TodoPage implements OnInit {
     this.refeshTodo();
   }
 
-  async editTodo(todo) {
-    console.log(todo);
+  // async editTodo(todo) {
+  //   console.log(todo);
     
-    const modal = await this.modalController.create({
-      component: TodoFormPage,
-      componentProps: { label: todo.label },
-    });
+  //   const modal = await this.modalController.create({
+  //     component: TodoFormPage,
+  //     componentProps: { label: todo.label },
+  //   });
 
-    await modal.present();
+  //   await modal.present();
 
-    const result = await modal.onDidDismiss();
+  //   const result = await modal.onDidDismiss();
 
-    console.log(result);
+  //   console.log(result);
 
-    if(result.data != '') {
-      const todo = {
-        label: result.data,
-        check: false,
-      }
-    }
+  //   if(result.data != '') {
+  //     const t = {
+  //       label: result.data,
+  //       check: todo.check,
+  //     };
+      
+  //     this.dbService.update(t);
+  //     this.refeshTodo();
+  //   }
 
-  }
+  // }
 
 }

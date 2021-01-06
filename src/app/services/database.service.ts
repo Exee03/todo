@@ -30,7 +30,11 @@ export class DatabaseService {
   }
 
   async read() {
-    this.todos = await this.storage.get('todos');
+    const data = await this.storage.get('todos');
+    if (data == null) {
+      return this.todos;
+    }
+    this.todos = data;
     return this.todos;
   }
 
@@ -48,13 +52,13 @@ export class DatabaseService {
 
   delete(todo) {
     this.todos = this.todos.filter((t) => {
-      if(t.label == todo.label){
+      if (t.label == todo.label) {
         return false;
       } else {
         return true;
       }
     })
-    
+
     this.storage.set('todos', this.todos);
   }
 }

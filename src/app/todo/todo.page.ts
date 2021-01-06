@@ -18,9 +18,9 @@ export class TodoPage implements OnInit {
     private dbService: DatabaseService,
   ) { }
 
-  ngOnInit() {
-    this.getTodos();
-    this.refeshTodo();
+  async ngOnInit() {
+    await this.getTodos();
+    await this.refeshTodo();
   }
 
   async getTodos() {
@@ -48,12 +48,14 @@ export class TodoPage implements OnInit {
 
   async refeshTodo() {
     await this.getTodos();
-    this.filterTodo = this.todos.filter((t) => {
-      if (this.segment == "uncheck") {
-        return t.check == false;
-      }
-      return t.check == true;
-    });
+    if (this.todos != null) {
+      this.filterTodo = this.todos.filter((t) => {
+        if (this.segment == "uncheck") {
+          return t.check == false;
+        }
+        return t.check == true;
+      });
+    }
   }
 
   async addTodo() {
@@ -87,7 +89,7 @@ export class TodoPage implements OnInit {
 
   // async editTodo(todo) {
   //   console.log(todo);
-    
+
   //   const modal = await this.modalController.create({
   //     component: TodoFormPage,
   //     componentProps: { label: todo.label },
@@ -104,7 +106,7 @@ export class TodoPage implements OnInit {
   //       label: result.data,
   //       check: todo.check,
   //     };
-      
+
   //     this.dbService.update(t);
   //     this.refeshTodo();
   //   }

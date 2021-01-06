@@ -22,9 +22,14 @@ export class TodoPage implements OnInit {
     }
   ];
 
+  filterTodo = [];
+
+  segment = 'uncheck';
+
   constructor() { }
 
   ngOnInit() {
+    this.refeshTodo();
   }
 
   checked(todo) {
@@ -37,11 +42,21 @@ export class TodoPage implements OnInit {
       }
       return t;
     });
+    this.refeshTodo();
   }
 
   segmentChanged(event) {
-    console.log(event.detail.value);
-    
+    this.segment = event.detail.value;
+    this.refeshTodo();
+  }
+
+  refeshTodo() {
+    this.filterTodo = this.todos.filter((t) => {
+      if (this.segment == "uncheck"){
+        return t.check == false;
+      }
+      return t.check == true;
+    });
   }
 
 }
